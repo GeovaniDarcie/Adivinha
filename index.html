@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advinha</title>
     <script src="adivinha.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Pense em um número de 0 a 100</h1>
-    <button class="inicio">Já pensei</button>
+    <header>
+        <h1>Pense em um número de 0 a 100</h1>
+        <button class="inicio">Já pensei</button>
+    </header>
 
-    <div class="menu">
-        <h2>Seu número é: <span></span></h2>
-        <button>Mais Baixo</button>
-        <button>Mais Alto</button>
-        <button>Acertou!</button>
-        <p>Chances: </p>
+    <nav class="menu">
+        <span class="quadrado"></span>
+        <div class="buttons">
+            <button class="menor">Menor</button>
+            <button class="maior">Maior</button>
+        </div>
+        <button class="acertou">Acertou!</button>
+        <p class="tentativas">Tentativas: <label></label></p>
         <button>Novo Jogo</button>
-    </div>
+    </nav>
 
-    <div class="placar">
-        <p>Computador: </p>
+    <footer class="placar">
+        <p style="color:#4682B4">Computador: </p>
         <p>Humano: </p>
-    </div>
+    </footer>
 </body>
 </html>
