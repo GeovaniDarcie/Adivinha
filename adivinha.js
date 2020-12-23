@@ -2,7 +2,7 @@
 const buttons = document.querySelectorAll('button')
 const header = document.querySelector('header')
 const menu = document.querySelector('.menu')
-const chance = document.querySelector('.menu label')
+const canvas = document.querySelector('canvas')
 const span = document.querySelector('span')
 const placar = document.querySelectorAll('.placar p')
 
@@ -18,6 +18,9 @@ let maxBaixo = 100, maxAlto = 100
 let repetidos = [];
 let chances;
 let reaisG = 0, reaisC = 0
+let cor
+
+let ctx = canvas.getContext('2d')
 
 buttons[0].addEventListener('click', inicia);
 
@@ -26,9 +29,9 @@ function inicia(){
         placar[0].style.display = 'block'
         placar[1].style.display = 'block'
         buttons[0].style.display = 'none'
-        chance.textContent = ''
-        header.style.height = '100px';
-    
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        header.style.height = '145px';
+        
         minBaixo = 0; minAlto = 0; maxBaixo = 100; maxAlto = 100;
         chances = 0;
         repetidos = [];
@@ -38,7 +41,7 @@ function inicia(){
 }
 
 buttons[1].addEventListener('click', ()=> {
-   if(chances <= 7){
+   if(chances < 7){
        maxBaixo = numero
        minBaixo = minAlto
     
@@ -58,17 +61,17 @@ buttons[1].addEventListener('click', ()=> {
        span.textContent = numero
 
        chances++
-       let cor = gera_cor();
-       chance.style.color = cor;
-       chance.textContent += ' |'
+       desenha_risco(chances)
    } else {
-    chance.textContent = '!!!PERDEU!!!'
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '20px Cursive'
+    ctx.fillText('!!!PERDEU!!!', 10, 30)
     buttons[4].style.display = 'block'
    }
 })
 
 buttons[2].addEventListener('click', ()=> {
-    if(chances <= 7){
+    if(chances < 7){
         minAlto = numero
         maxAlto = maxBaixo
     
@@ -86,12 +89,14 @@ buttons[2].addEventListener('click', ()=> {
         repetidos.push(numero)
         console.log(repetidos)
         span.textContent = numero
+
         chances++
-        let cor = gera_cor();
-        chance.style.color = cor;
-        chance.textContent += ' |'
+        desenha_risco(chances)
+     
     } else {
-        chance.textContent = '!!!PERDEU!!!'
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '20px Cursive'
+        ctx.fillText('!!!PERDEU!!!', 10, 30)
         buttons[4].style.display = 'block'
     }
  })
@@ -115,7 +120,43 @@ buttons[2].addEventListener('click', ()=> {
     placar[1].textContent = `Humano: ${reaisC} pontos`
  })
 
-function gera_cor(){
+function desenha_risco(chances){
+    switch(chances){
+        case 1:
+            riscar(10, 10, 10, 40)
+            break;
+        case 2:
+            riscar(10, 10, 40, 10)
+            break;
+        case 3:
+            riscar(40, 10, 40, 40) 
+            break;
+        case 4:
+            riscar(40, 40, 10, 40)  
+            break;         
+        case 5:
+            riscar(10, 40, 40, 10)
+            break;           
+        case 6:
+            riscar(60, 10, 60, 40)   
+            break        
+        case 7:
+            riscar(60, 10, 90, 10)   
+            break        
+    }   
+}
+
+function riscar(Xorigem, Yorigem, XDestino, Ydestino){
+    ctx.beginPath();
+    ctx.moveTo(Xorigem, Yorigem);
+    ctx.lineTo(XDestino, Ydestino);
+    ctx.strokeStyle = gerar_cor()
+    ctx.lineWidth = 2;
+    ctx.closePath();
+    ctx.stroke();
+}
+
+function gerar_cor(){
     let hexadecimais = '0123456789ABCDEF';
     let cor = '#';
   
