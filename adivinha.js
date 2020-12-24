@@ -29,8 +29,8 @@ function inicia(){
         placar[0].style.display = 'block'
         placar[1].style.display = 'block'
         buttons[0].style.display = 'none'
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         header.style.height = '145px';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         minBaixo = 0; minAlto = 0; maxBaixo = 100; maxAlto = 100;
         chances = 0;
@@ -51,7 +51,7 @@ buttons[1].addEventListener('click', ()=> {
            numero =  Math.floor(Math.random() * (maxBaixo - minBaixo) + minBaixo);
 
            if(minBaixo == maxBaixo || minBaixo-1 == maxBaixo || minBaixo == maxBaixo-1){
-               alert('Você mentiu, ou apertou errado!');
+               alert('Você mentiu ou apertou errado!');
                inicia();
            }
        }
@@ -81,7 +81,7 @@ buttons[2].addEventListener('click', ()=> {
             numero =  Math.floor(Math.random() * (maxAlto - minAlto) + minAlto);
 
             if(minAlto == maxAlto-1){
-                alert('Você mentiu, ou apertou errado!');
+                alert('Você mentiu ou apertou errado!');
                 inicia();
             }
         }
