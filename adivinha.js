@@ -54,7 +54,7 @@ buttons[1].addEventListener('click', ()=> {
        while(repetidos.indexOf(numero) >= 0){
            numero =  Math.floor(Math.random() * (maxBaixo - minBaixo) + minBaixo);
             
-           if(minBaixo == maxBaixo){
+           if(minBaixo == maxBaixo || minBaixo == maxBaixo-1){
                 inicia()
                 alert('Você mentiu ou apertou errado!');
            }
@@ -68,8 +68,9 @@ buttons[1].addEventListener('click', ()=> {
        desenha_risco(chances)
    } else {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '20px Cursive'
-    ctx.fillText('!!!PERDEU!!!', 10, 30)
+    ctx.font = '1.3rem Love Ya Like A Sister'
+    ctx.fillStyle = "#6495ED";
+    ctx.fillText('HUMANO VENCEU!!', 5, 49)
     buttons[3].style.display = 'none'
     buttons[4].style.display = 'block'
    }
@@ -100,8 +101,9 @@ buttons[2].addEventListener('click', ()=> {
      
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = '20px Love Ya Like A Sister'
-        ctx.fillText('!!!PERDEU!!!', 10, 30)
+        ctx.font = '1.3rem Love Ya Like A Sister'
+        ctx.fillStyle = "#6495ED";
+        ctx.fillText('HUMANO VENCEU!!', 5, 49)
         buttons[3].style.display = 'none'
         buttons[4].style.display = 'block'
     }
@@ -128,25 +130,25 @@ buttons[2].addEventListener('click', ()=> {
 function desenha_risco(chances){
     switch(chances){
         case 1:
-            riscar(10, 10, 10, 40)
+            riscar(10, 20, 10, 50)
             break;
         case 2:
-            riscar(10, 10, 40, 10)
+            riscar(10, 20, 40, 20)
             break;
         case 3:
-            riscar(40, 10, 40, 40) 
+            riscar(40, 20, 40, 50) 
             break;
         case 4:
-            riscar(40, 40, 10, 40)  
+            riscar(10, 49, 40, 49)  
             break;         
         case 5:
-            riscar(10, 40, 40, 10)
+            riscar(10, 49, 40, 20)
             break;           
         case 6:
-            riscar(60, 10, 60, 40)   
+            riscar(60, 20, 60, 49)   
             break        
         case 7:
-            riscar(60, 10, 90, 10)   
+            riscar(60, 20, 90, 20)   
             break        
     }   
 }
