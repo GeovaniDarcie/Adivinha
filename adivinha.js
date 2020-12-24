@@ -14,7 +14,7 @@ buttons[4].style.display = 'none'
 let numero
 
 let minBaixo = 0, minAlto = 0
-let maxBaixo = 100, maxAlto = 100
+let maxBaixo = 101, maxAlto = 101
 let repetidos = [];
 let chances;
 let reaisG = 0, reaisC = 0
@@ -31,10 +31,12 @@ function inicia(){
         placar[0].textContent = `Computador: ${reaisG} pontos`
         placar[1].textContent = `Humano: ${reaisC} pontos`
         buttons[0].style.display = 'none'
+        buttons[3].style.display = 'block'
+        buttons[4].style.display = 'none'
         header.style.height = '145px';
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        minBaixo = 0; minAlto = 0; maxBaixo = 100; maxAlto = 100;
+        minBaixo = 0; minAlto = 0; maxBaixo = 101; maxAlto = 101;
         chances = 0;
         repetidos = [];
         numero = Math.floor(Math.random() * 101)
@@ -51,10 +53,10 @@ buttons[1].addEventListener('click', ()=> {
        
        while(repetidos.indexOf(numero) >= 0){
            numero =  Math.floor(Math.random() * (maxBaixo - minBaixo) + minBaixo);
-
+            
            if(minBaixo == maxBaixo){
-               alert('Você mentiu ou apertou errado!');
-               inicia();
+                inicia()
+                alert('Você mentiu ou apertou errado!');
            }
        }
     
@@ -68,6 +70,7 @@ buttons[1].addEventListener('click', ()=> {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = '20px Cursive'
     ctx.fillText('!!!PERDEU!!!', 10, 30)
+    buttons[3].style.display = 'none'
     buttons[4].style.display = 'block'
    }
 })
@@ -97,8 +100,9 @@ buttons[2].addEventListener('click', ()=> {
      
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = '20px Cursive'
+        ctx.font = '20px Love Ya Like A Sister'
         ctx.fillText('!!!PERDEU!!!', 10, 30)
+        buttons[3].style.display = 'none'
         buttons[4].style.display = 'block'
     }
  })
@@ -108,7 +112,7 @@ buttons[2].addEventListener('click', ()=> {
     placar[0].style.display = 'none'
     placar[1].style.display = 'none'
     buttons[0].style.display = 'block'
-
+   
     reaisG++;
  })
 
