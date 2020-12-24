@@ -50,7 +50,7 @@ buttons[1].addEventListener('click', ()=> {
        while(repetidos.indexOf(numero) >= 0){
            numero =  Math.floor(Math.random() * (maxBaixo - minBaixo) + minBaixo);
 
-           if(minBaixo == maxBaixo || minBaixo-1 == maxBaixo || minBaixo == maxBaixo-1){
+           if(minBaixo == maxBaixo){
                alert('Você mentiu ou apertou errado!');
                inicia();
            }
