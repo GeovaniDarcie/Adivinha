@@ -28,6 +28,8 @@ function inicia(){
         menu.style.display = 'flex'
         placar[0].style.display = 'block'
         placar[1].style.display = 'block'
+        placar[0].textContent = `Computador: ${reaisG} pontos`
+        placar[1].textContent = `Humano: ${reaisC} pontos`
         buttons[0].style.display = 'none'
         header.style.height = '145px';
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -103,21 +105,20 @@ buttons[2].addEventListener('click', ()=> {
 
  buttons[3].addEventListener('click', ()=> {
     menu.style.display = 'none'
+    placar[0].style.display = 'none'
+    placar[1].style.display = 'none'
     buttons[0].style.display = 'block'
 
     reaisG++;
-    placar[0].textContent = `Computador: ${reaisG} pontos`
-    placar[1].textContent = `Humano: ${reaisC} pontos`
-
  })
 
  buttons[4].addEventListener('click', () => {
     menu.style.display = 'none'
+    placar[0].style.display = 'none'
+    placar[1].style.display = 'none'
     buttons[0].style.display = 'block'
 
     reaisC++;
-    placar[0].textContent = `Computador: ${reaisG} pontos`
-    placar[1].textContent = `Humano: ${reaisC} pontos`
  })
 
 function desenha_risco(chances){
